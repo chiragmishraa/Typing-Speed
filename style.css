@@ -449,13 +449,24 @@ body.dark .previous-score, body.dark .highest-score {
     font-size: 0.95rem;
     padding: 4px 0 4px 0;
     margin-bottom: 7px;
+    word-break: break-word;
+    white-space: normal;
+    text-align: center;
+    display: block !important;
+  }
+  .previous-score strong, .highest-score strong {
+    display: inline;
   }
 }
-@media (orientation: landscape) and (max-width: 900px) {
+@media (max-width: 400px) {
   .previous-score, .highest-score {
     font-size: 0.85rem;
     padding: 2px 0 2px 0;
     margin-bottom: 4px;
+    word-break: break-word;
+    white-space: normal;
+    text-align: center;
+    display: block !important;
   }
 }
 /* --- END FIX --- */
