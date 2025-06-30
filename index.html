@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Speed Test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Theme Switch will be injected by JS -->
+    <h1>Typing Speed Test</h1>
+
+    <div id="timer">Time: 60s</div>
+
+    <div id="word-display">Loading...</div>
+
+    <input type="text" id="input-box" placeholder="Start typing here..." disabled />
+
+    <div class="results">
+      <div>WPM: <span id="wpm">0</span></div>
+      <div>Accuracy: <span id="accuracy">0</span>%</div>
+    </div>
+
+    <div class="previous-score" style="margin-bottom: 10px; display: none;">
+      <strong>Previous Score:</strong>
+      <span id="prev-wpm">0</span> WPM,
+      <span id="prev-accuracy">0</span>% Accuracy
+    </div>
+
+    <div class="highest-score" style="margin-bottom: 18px; display: none;">
+      <strong>Your Highest Score:</strong>
+      <span id="high-wpm">0</span> WPM,
+      <span id="high-accuracy">0</span>% Accuracy
+    </div>
+
+    <button id="restart-btn">Start Test</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
