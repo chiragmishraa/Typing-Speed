@@ -33,6 +33,7 @@ const prevScoreDiv = document.querySelector('.previous-score');
 const prevWpmSpan = document.getElementById('prev-wpm');
 const prevAccuracySpan = document.getElementById('prev-accuracy');
 const prevMistakesSpan = document.getElementById('prev-mistakes');
+const prevTotalSpan = document.getElementById('prev-total');
 const highScoreDiv = document.querySelector('.highest-score');
 const highWpmSpan = document.getElementById('high-wpm');
 const highAccuracySpan = document.getElementById('high-accuracy');
@@ -98,7 +99,7 @@ function endTest() {
   wpmDisplay.textContent = wpm;
   accuracyDisplay.textContent = accuracy;
 
-  savePreviousScore(wpm, accuracy, mistakeCount);
+  savePreviousScore(wpm, accuracy, mistakeCount, wordCount);
   saveHighestScore(wpm, accuracy);
   loadPreviousScore();
   loadHighestScore();
@@ -110,14 +111,15 @@ function loadPreviousScore() {
     prevWpmSpan.textContent = prev.wpm;
     prevAccuracySpan.textContent = prev.accuracy;
     prevMistakesSpan.textContent = prev.mistakes || 0;
+    prevTotalSpan.textContent = prev.totalWords || 0;
     prevScoreDiv.style.display = '';
   } else {
     prevScoreDiv.style.display = 'none';
   }
 }
 
-function savePreviousScore(wpm, accuracy, mistakes) {
-  localStorage.setItem('previousScore', JSON.stringify({ wpm, accuracy, mistakes }));
+function savePreviousScore(wpm, accuracy, mistakes, totalWords) {
+  localStorage.setItem('previousScore', JSON.stringify({ wpm, accuracy, mistakes, totalWords }));
 }
 
 function loadHighestScore() {
