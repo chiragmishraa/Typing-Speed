@@ -20,6 +20,7 @@ let timeLeft = 60;
 let timerId;
 let wordCount = 0;
 let correctWords = 0;
+let mistakeCount = 0;
 let isTestRunning = false;
 
 const timer = document.getElementById('timer');
@@ -31,6 +32,7 @@ const restartBtn = document.getElementById('restart-btn');
 const prevScoreDiv = document.querySelector('.previous-score');
 const prevWpmSpan = document.getElementById('prev-wpm');
 const prevAccuracySpan = document.getElementById('prev-accuracy');
+const prevMistakesSpan = document.getElementById('prev-mistakes');
 const highScoreDiv = document.querySelector('.highest-score');
 const highWpmSpan = document.getElementById('high-wpm');
 const highAccuracySpan = document.getElementById('high-accuracy');
@@ -39,6 +41,7 @@ function startTest() {
   isTestRunning = true;
   wordCount = 0;
   correctWords = 0;
+  mistakeCount = 0;
   timeLeft = 60;
   inputBox.disabled = false;
   inputBox.focus();
@@ -78,6 +81,8 @@ function checkWord() {
 
   if (typedWord === displayedWord) {
     correctWords++;
+  } else {
+    mistakeCount++;
   }
 
   showNewWord();
@@ -93,7 +98,7 @@ function endTest() {
   wpmDisplay.textContent = wpm;
   accuracyDisplay.textContent = accuracy;
 
-  savePreviousScore(wpm, accuracy);
+  savePreviousScore(wpm, accuracy, mistakeCount);
   saveHighestScore(wpm, accuracy);
   loadPreviousScore();
   loadHighestScore();
@@ -104,14 +109,15 @@ function loadPreviousScore() {
   if (prev && typeof prev.wpm === 'number' && typeof prev.accuracy === 'number') {
     prevWpmSpan.textContent = prev.wpm;
     prevAccuracySpan.textContent = prev.accuracy;
+    prevMistakesSpan.textContent = prev.mistakes || 0;
     prevScoreDiv.style.display = '';
   } else {
     prevScoreDiv.style.display = 'none';
   }
 }
 
-function savePreviousScore(wpm, accuracy) {
-  localStorage.setItem('previousScore', JSON.stringify({ wpm, accuracy }));
+function savePreviousScore(wpm, accuracy, mistakes) {
+  localStorage.setItem('previousScore', JSON.stringify({ wpm, accuracy, mistakes }));
 }
 
 function loadHighestScore() {
