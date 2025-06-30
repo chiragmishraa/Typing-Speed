@@ -429,6 +429,37 @@ body.day .cloud5 { top: 25px; left: 0; animation-delay: 8s; }
   100% { transform: translateX(80px); }
 }
 
+/* --- FIX: Make score sections always visible and responsive on mobile --- */
+.previous-score, .highest-score {
+  display: block !important;
+  font-size: 1rem;
+  color: #333;
+  background: rgba(255,255,255,0.7);
+  border-radius: 8px;
+  padding: 6px 0 6px 0;
+  margin-bottom: 10px;
+  transition: background 0.3s, color 0.3s;
+}
+body.dark .previous-score, body.dark .highest-score {
+  color: #b3b3ff;
+  background: rgba(35,38,58,0.7);
+}
+@media (max-width: 600px) {
+  .previous-score, .highest-score {
+    font-size: 0.95rem;
+    padding: 4px 0 4px 0;
+    margin-bottom: 7px;
+  }
+}
+@media (orientation: landscape) and (max-width: 900px) {
+  .previous-score, .highest-score {
+    font-size: 0.85rem;
+    padding: 2px 0 2px 0;
+    margin-bottom: 4px;
+  }
+}
+/* --- END FIX --- */
+
 @media (max-width: 900px) {
   .container {
     max-width: 98vw;
