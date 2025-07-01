@@ -230,6 +230,71 @@ button:hover {
   background: #574fd6;
 }
 
+/* --- BUTTON STYLE MATCHING FIX --- */
+#restart-btn, #history-btn {
+  background: linear-gradient(90deg, #6c63ff 0%, #48c6ef 100%);
+  color: #fff;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 24px 0 rgba(76,110,245,0.18), 0 2px 8px rgba(76,110,245,0.13);
+  margin-top: 10px;
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  display: inline-block;
+  outline: none;
+}
+#restart-btn:hover, #history-btn:hover {
+  background: linear-gradient(90deg, #48c6ef 0%, #6c63ff 100%);
+  transform: scale(1.07);
+  box-shadow: 0 8px 32px 0 rgba(76,110,245,0.22), 0 2px 8px rgba(76,110,245,0.13);
+}
+#history-btn {
+  margin-left: 18px;
+}
+
+body.dark #restart-btn, body.dark #history-btn {
+  background: linear-gradient(90deg, #23263a 0%, #6c63ff 100%);
+  color: #fff;
+  box-shadow: 0 6px 24px 0 rgba(76,110,245,0.22), 0 2px 8px rgba(76,110,245,0.13);
+}
+body.dark #restart-btn:hover, body.dark #history-btn:hover {
+  background: linear-gradient(90deg, #6c63ff 0%, #23263a 100%);
+  box-shadow: 0 8px 32px 0 rgba(76,110,245,0.28), 0 2px 8px rgba(76,110,245,0.13);
+}
+/* --- END BUTTON STYLE MATCHING FIX --- */
+
+#restart-btn, #history-btn {
+  background: linear-gradient(90deg, #6c63ff 0%, #48c6ef 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(76,110,245,0.13);
+  margin-top: 10px;
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+  transition: background 0.3s, transform 0.2s;
+  display: inline-block;
+}
+#restart-btn:hover, #history-btn:hover {
+  background: linear-gradient(90deg, #48c6ef 0%, #6c63ff 100%);
+  transform: scale(1.05);
+}
+
+#history-btn {
+  margin-left: 10px;
+}
+
 #restart-btn {
   background: linear-gradient(90deg, #6c63ff 0%, #48c6ef 100%);
   color: #fff;
