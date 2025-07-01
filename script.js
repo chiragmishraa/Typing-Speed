@@ -124,15 +124,10 @@ function savePreviousScore(wpm, accuracy, mistakes, totalWords) {
 
 function loadHighestScore() {
   const high = JSON.parse(localStorage.getItem('highestScore'));
-  // Only show if highest score is strictly better than previous
-  const prev = JSON.parse(localStorage.getItem('previousScore'));
-  if (
-    high && typeof high.wpm === 'number' && typeof high.accuracy === 'number' &&
-    (!prev || high.wpm > prev.wpm || (high.wpm === prev.wpm && high.accuracy > prev.accuracy))
-  ) {
+  if (high && typeof high.wpm === 'number' && typeof high.accuracy === 'number') {
     highWpmSpan.textContent = high.wpm;
     highAccuracySpan.textContent = high.accuracy;
-    highScoreDiv.style.display = '';
+    highScoreDiv.style.display = 'block';
   } else {
     highScoreDiv.style.display = 'none';
   }
