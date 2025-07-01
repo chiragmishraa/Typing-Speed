@@ -34,9 +34,6 @@ const prevWpmSpan = document.getElementById('prev-wpm');
 const prevAccuracySpan = document.getElementById('prev-accuracy');
 const prevMistakesSpan = document.getElementById('prev-mistakes');
 const prevTotalSpan = document.getElementById('prev-total');
-const highScoreDiv = document.querySelector('.highest-score');
-const highWpmSpan = document.getElementById('high-wpm');
-const highAccuracySpan = document.getElementById('high-accuracy');
 
 function startTest() {
   isTestRunning = true;
@@ -92,17 +89,12 @@ function checkWord() {
 function endTest() {
   isTestRunning = false;
   inputBox.disabled = true;
-
   const wpm = Math.round((correctWords / 60) * 60); // since test is 60s
   const accuracy = wordCount === 0 ? 0 : Math.round((correctWords / wordCount) * 100);
-
   wpmDisplay.textContent = wpm;
   accuracyDisplay.textContent = accuracy;
-
-  savePreviousScore(wpm, accuracy, mistakeCount, wordCount);
-  saveHighestScore(wpm, accuracy);
+  savePreviousScore(wpm, accuracy, mistakeCount);
   loadPreviousScore();
-  loadHighestScore();
 }
 
 function loadPreviousScore() {
@@ -111,33 +103,14 @@ function loadPreviousScore() {
     prevWpmSpan.textContent = prev.wpm;
     prevAccuracySpan.textContent = prev.accuracy;
     prevMistakesSpan.textContent = prev.mistakes || 0;
-    prevTotalSpan.textContent = prev.totalWords || 0;
     prevScoreDiv.style.display = '';
   } else {
     prevScoreDiv.style.display = 'none';
   }
 }
 
-function savePreviousScore(wpm, accuracy, mistakes, totalWords) {
-  localStorage.setItem('previousScore', JSON.stringify({ wpm, accuracy, mistakes, totalWords }));
-}
-
-function loadHighestScore() {
-  const high = JSON.parse(localStorage.getItem('highestScore'));
-  if (high && typeof high.wpm === 'number' && typeof high.accuracy === 'number') {
-    highWpmSpan.textContent = high.wpm;
-    highAccuracySpan.textContent = high.accuracy;
-    highScoreDiv.style.display = 'block';
-  } else {
-    highScoreDiv.style.display = 'none';
-  }
-}
-
-function saveHighestScore(wpm, accuracy) {
-  const high = JSON.parse(localStorage.getItem('highestScore'));
-  if (!high || wpm > high.wpm || (wpm === high.wpm && accuracy > high.accuracy)) {
-    localStorage.setItem('highestScore', JSON.stringify({ wpm, accuracy }));
-  }
+function savePreviousScore(wpm, accuracy, mistakes) {
+  localStorage.setItem('previousScore', JSON.stringify({ wpm, accuracy, mistakes }));
 }
 
 restartBtn.addEventListener('click', function() {
@@ -288,5 +261,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   loadPreviousScore();
-  loadHighestScore();
 });
